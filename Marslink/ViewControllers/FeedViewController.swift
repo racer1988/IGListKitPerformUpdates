@@ -62,8 +62,8 @@ class FeedViewController: UIViewController {
 extension FeedViewController: IGListAdapterDataSource {
   
   func objects(for listAdapter: IGListAdapter) -> [IGListDiffable] {
-    var items: [IGListDiffable] = [wxScanner.currentWeather]
-    items += loader.entries as [IGListDiffable]
+    var items: [IGListDiffable] = []
+    //items += loader.entries as [IGListDiffable]
     items += pathfinder.messages as [IGListDiffable]
 
     return items.sorted(by: { (left: Any, right: Any) -> Bool in
