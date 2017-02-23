@@ -53,11 +53,11 @@ class Pathfinder {
   }
   
   func connect() {
-    delay(time: 5) {
-      self.messages.append(lewisMessage(text: "Liftoff in 3..."))
-      delay {
-        self.messages.append(lewisMessage(text: "2..."))
-        delay {
+    delay(time: 1) {
+      //self.messages.append(lewisMessage(text: "Liftoff in 3..."))
+      //delay {
+        //self.messages.append(lewisMessage(text: "2..."))
+      //delay {
           let message = lewisMessage(text: "1...")
           self.messages.append(message)
           
@@ -67,14 +67,14 @@ class Pathfinder {
             self.delegate?.pathfinderDidUpdateMessages(pathfinder: self)
 
             delay {
-              self.messages.remove(at: 0)
+              //self.messages.remove(at: 0)
               delay {
                 //self.messages.append(lewisMessage(text: "DUH"))
               }
             }
 
-          }
-        }
+            //  }
+            //}
       }
     }
   }

@@ -22,7 +22,7 @@
 
 import UIKit
 
-class Message: NSObject, DateSortable {
+class Message: NSObject, DateSortable, NSCopying {
   
   let date: Date
   var text: String
@@ -32,6 +32,11 @@ class Message: NSObject, DateSortable {
     self.date = date
     self.text = text
     self.user = user
+  }
+
+  public func copy(with zone: NSZone? = nil) -> Any {
+    return Message(date: self.date, text: self.text, user: self.user)
+
   }
   
 }
