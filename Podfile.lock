@@ -1,5 +1,9 @@
 PODS:
-  - IGListKit (1.0.0)
+  - IGListKit (2.1.0):
+    - IGListKit/Default (= 2.1.0)
+  - IGListKit/Default (2.1.0):
+    - IGListKit/Diffing
+  - IGListKit/Diffing (2.1.0)
 
 DEPENDENCIES:
   - IGListKit (from `https://github.com/Instagram/IGListKit.git`, branch `master`)
@@ -11,12 +15,12 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   IGListKit:
-    :commit: e1d6f5255243cbf4c2f7d8e77e2ea1dd1f583dcf
+    :commit: 6bdcac81d8b5fe7bf8824edc5c64372e99121ed3
     :git: https://github.com/Instagram/IGListKit.git
 
 SPEC CHECKSUMS:
-  IGListKit: a534a917b574ec56697390ef182f125ccff2145b
+  IGListKit: b826c68ef7a4ae1626c09d4d3e1ea7a169e6c36e
 
 PODFILE CHECKSUM: 821e6140b55085368f6ab60db1c7d34ebfdca84d
 
-COCOAPODS: 1.1.1
+COCOAPODS: 1.2.0
