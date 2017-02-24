@@ -21,10 +21,18 @@
  */
 
 import UIKit
+import IGListKit
 
 class Message: NSObject, DateSortable, NSCopying {
-  
-  let date: Date
+
+  public func copy(with zone: NSZone? = nil) -> Any {
+        let copy = Message(date: self.date, text: self.text, user: self.user)
+      copy.id = self.id
+    return copy
+  }
+
+  var id: UInt32
+  var date: Date
   var text: String
   let user: User
   
@@ -32,11 +40,27 @@ class Message: NSObject, DateSortable, NSCopying {
     self.date = date
     self.text = text
     self.user = user
+    self.id = arc4random()
   }
 
-  public func copy(with zone: NSZone? = nil) -> Any {
-    return Message(date: self.date, text: self.text, user: self.user)
-
-  }
+//  override var description: String {
+//    return "\(self) = \(self.text) - \(self.date)"
+//  }
   
 }
+
+extension Message: IGListDiffable {
+
+  public func diffIdentifier() -> NSObjectProtocol {
+    return self.id as NSObjectProtocol
+  }
+
+  public func isEqual(toDiffableObject object: IGListDiffable?) -> Bool {
+    guard let to = object as? Message else {return false}
+
+    return self.text == to.text
+
+
+  }
+}
+

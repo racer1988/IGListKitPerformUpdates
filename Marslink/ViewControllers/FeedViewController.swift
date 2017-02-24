@@ -64,14 +64,20 @@ extension FeedViewController: IGListAdapterDataSource {
   func objects(for listAdapter: IGListAdapter) -> [IGListDiffable] {
     var items: [IGListDiffable] = []
     //items += loader.entries as [IGListDiffable]
-    items += pathfinder.messages as [IGListDiffable]
+    let messages = pathfinder.messages
+    items = messages.map {
+      $0.copy() as! Message
+    }
+    //items += pathfinder.messages as [IGListDiffable]
 
-    return items.sorted(by: { (left: Any, right: Any) -> Bool in
+    let sorted = items.sorted(by: { (left: Any, right: Any) -> Bool in
       if let left = left as? DateSortable, let right = right as? DateSortable {
         return left.date > right.date
       }
       return false
     })
+
+    return sorted
   }
   
   func listAdapter(_ listAdapter: IGListAdapter, sectionControllerFor object: Any) -> IGListSectionController {
